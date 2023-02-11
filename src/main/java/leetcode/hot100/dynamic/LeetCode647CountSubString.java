@@ -25,4 +25,27 @@ public class LeetCode647CountSubString {
         }
         return result;
     }
+
+    // 第二种采用中间节点向左右发散的方式统计
+    public int countSubString(String s) {
+        char[] array = s.toCharArray();
+        int result = 0;
+        for (int i = 0; i < array.length; i++) {
+            // 长度为奇数时 以i为中间节点向左右两边扩散
+            result += count(array, i, i);
+            // 长度为偶数时，以i和i+1两个节点为中心点向左右两边扩散
+            result += count(array, i, i+1);
+        }
+        return result;
+    }
+
+    public int count(char[] array, int i, int j) {
+        int n = array.length, res = 0;
+        while (i >= 0 && j < n && array[i] == array[j]) {
+            i--;
+            j++;
+            res++;
+        }
+        return res;
+    }
 }
