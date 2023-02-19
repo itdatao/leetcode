@@ -64,6 +64,16 @@
             <artifactId>hutool-all</artifactId>
             <version>5.4.1</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.phantomthief</groupId>
+            <artifactId>buffer-trigger</artifactId>
+            <version>0.2.9</version>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+            <version>1.9.13</version>
+        </dependency>
 
     </dependencies>
 </project>
