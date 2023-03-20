@@ -1,5 +1,8 @@
 package leetcode.offer;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author huhuitao
  * @version 1.0.0
@@ -43,7 +46,7 @@ public class QuickSort {
         for (int element : array) {
             System.out.print(element + " ");
         }
-
+        Map<String ,String> map = new HashMap<>();
         quickSort(array, 0, array.length - 1);
 
         System.out.println("\n排序之后：");
