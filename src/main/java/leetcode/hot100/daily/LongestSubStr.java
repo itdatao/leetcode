@@ -1,6 +1,8 @@
 package leetcode.hot100.daily;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -17,21 +19,24 @@ public class LongestSubStr {
     public static int lengthOfLongestSubstring(String s) {
         int maxLength = 0, left = 0;
         int len = s.length();
-        char[] ss = s.toCharArray();
-        HashSet<Character> set = new HashSet<>();
+
+        char[] uniqueChars = s.toCharArray();
+        Map<Character, Integer> map = new HashMap<>();
         for (int i = 0; i < len; i++) {
-            if (set.contains(ss[i])) {
-                set.remove(ss[i]);
-                left++;
-            } else {
-                set.add(ss[i]);
-                maxLength = Math.max(maxLength, i - left);
+            // 如果遇到窗口中重复的字符
+            // 移动左边界
+            if (map.containsKey(uniqueChars[i])) {
+                left = Math.max(left, map.get(uniqueChars[i]) + 1);
             }
+
+            map.put(uniqueChars[i], i);
+            maxLength = Math.max(maxLength, i - left + 1);
+
         }
         return maxLength;
     }
 
     public static void main(String[] args) {
-        System.out.println(lengthOfLongestSubstring("abcabcbb"));
+        System.out.println(lengthOfLongestSubstring("pwwkew"));
     }
 }
